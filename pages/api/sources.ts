@@ -39,12 +39,23 @@ const searchHandler = async (req: NextApiRequest, res: NextApiResponse<Data>) =>
     });
 
     const filteredLinks = links.filter((link, idx) => {
-      const domain = new URL(link).hostname;
+      let domain: string = '';
+      try {
+        domain = new URL(link).hostname;
+      } catch (err) {
+        return false;
+      }
 
       const excludeList = ["google", "facebook", "twitter", "instagram", "youtube", "tiktok"];
       if (excludeList.some((site) => domain.includes(site))) return false;
 
-      return links.findIndex((link) => new URL(link).hostname === domain) === idx;
+      return links.findIndex((link) => {
+        try {
+          return new URL(link).hostname === domain;
+        } catch (err) {
+          return false;
+        }
+      }) === idx;
     });
 
     const finalLinks = filteredLinks.slice(0, sourceCount);
