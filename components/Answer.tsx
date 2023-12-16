@@ -44,7 +44,7 @@ export const Answer: FC<AnswerProps> = ({ searchQuery, answer, done, onReset }) 
           </div>
 
           <button
-            className="flex h-10 w-52 items-center justify-center rounded-full bg-blue-500 p-2 hover:cursor-pointer hover:bg-blue-600"
+            className="flex h-10 w-52 items-center justify-center bg-blue-500 p-2 hover:cursor-pointer hover:bg-blue-600"
             onClick={onReset}
           >
             <IconReload size={18} />
