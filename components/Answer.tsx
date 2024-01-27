@@ -11,48 +11,62 @@ interface AnswerProps {
 
 export const Answer: FC<AnswerProps> = ({ searchQuery, answer, done, onReset }) => {
   return (
-    <div className="max-w-[800px] space-y-4 py-16 px-8 sm:px-24 sm:pt-16 pb-32">
-      <div className="overflow-auto text-2xl sm:text-4xl">{searchQuery.query}</div>
+    <div className="flex">
+      <div className="max-w-[800px] space-y-4 py-16 px-8 sm:px-24 sm:pt-16 pb-32">
+        <div className="overflow-auto text-2xl sm:text-4xl">{searchQuery.query}</div>
 
-      <div className="border-b border-zinc-800 pb-4">
-        <div className="text-md text-blue-500">Answer</div>
+        <div className="border-b border-zinc-800 pb-4">
+          <div className="text-md text-blue-500">Answer</div>
 
-        <div className="mt-2 overflow-auto">{replaceSourcesWithLinks(answer, searchQuery.sourceLinks)}</div>
-      </div>
+          <div className="mt-2 overflow-auto">{replaceSourcesWithLinks(answer, searchQuery.sourceLinks)}</div>
+        </div>
 
-      {done && (
-        <>
-          <div className="border-b border-zinc-800 pb-4">
-            <div className="text-md text-blue-500">Sources</div>
+        {done && (
+          <>
+            <div className="border-b border-zinc-800 pb-4">
+              <div className="text-md text-blue-500">Sources</div>
 
-            {searchQuery.sourceLinks.map((source, index) => (
-              <div
-                key={index}
-                className="mt-1 overflow-auto"
-              >
-                {`[${index + 1}] `}
-                <a
-                  className="hover:cursor-pointer hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={source}
+              {searchQuery.sourceLinks.map((source, index) => (
+                <div
+                  key={index}
+                  className="mt-1 overflow-auto"
                 >
-                  {source.split("//")[1].split("/")[0].replace("www.", "")}
-                </a>
-              </div>
-            ))}
-          </div>
+                  {`[${index + 1}] `}
+                  <a
+                    className="hover:cursor-pointer hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={source}
+                  >
+                    {source.split("//")[1].split("/")[0].replace("www.", "")}
+                  </a>
+                </div>
+              ))}
+            </div>
 
-          <button
-            className="flex h-10 w-52 items-center justify-center bg-blue-500 p-2 hover:cursor-pointer hover:bg-blue-600"
-            onClick={onReset}
-          >
-            <IconReload size={18} />
-            <div className="ml-2">Ask New Question</div>
-          </button>
-        </>
-      )}
-      <div id="demo-ad" className="ad border-b border-zinc-800 pb-4">
+            <button
+              className="flex h-10 w-52 items-center justify-center bg-blue-500 p-2 hover:cursor-pointer hover:bg-blue-600"
+              onClick={onReset}
+            >
+              <IconReload size={18} />
+              <div className="ml-2">Ask New Question</div>
+            </button>
+          </>
+        )}
+      </div>
+      <div className="flex flex-col w-[200px] border-l border-zinc-800 pl-4">
+        {
+          <div id="demo-chat-ad" className="ad border-b border-zinc-800 pb-4">
+            <div className="text-md text-blue-500">Ad</div>
+            <div className="mt-2 overflow-auto">
+              <img
+                src="https://via.placeholder.com/200x200"
+                className="w-full h-full object-cover"
+                alt="ad"
+              />
+            </div>
+           </div>
+        }
       </div>
     </div>
   );
