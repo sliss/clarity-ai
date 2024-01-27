@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "env OPENAI_KEY=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 next dev",
     "build": "next build",
     "start": "next start -p `echo $PORT`",
     "lint": "next lint"

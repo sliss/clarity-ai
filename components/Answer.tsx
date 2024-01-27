@@ -12,7 +12,7 @@ interface AnswerProps {
 export const Answer: FC<AnswerProps> = ({ searchQuery, answer, done, onReset }) => {
   return (
     <div className="flex">
-      <div className="max-w-[800px] space-y-4 py-16 px-8 sm:px-24 sm:pt-16 pb-32">
+      <div className="flex flex-col max-w-[800px] space-y-4 py-16 px-8 sm:px-24 sm:pt-16 pb-32">
         <div className="overflow-auto text-2xl sm:text-4xl">{searchQuery.query}</div>
 
         <div className="border-b border-zinc-800 pb-4">
@@ -54,17 +54,9 @@ export const Answer: FC<AnswerProps> = ({ searchQuery, answer, done, onReset }) 
           </>
         )}
       </div>
-      <div className="flex flex-col w-[200px] border-l border-zinc-800 pl-4">
+      <div className="max-w-[800px] space-y-4 py-16 px-8 sm:px-24 sm:pt-16 pb-32">
         {
-          <div id="demo-chat-ad" className="ad border-b border-zinc-800 pb-4">
-            <div className="text-md text-blue-500">Ad</div>
-            <div className="mt-2 overflow-auto">
-              <img
-                src="https://via.placeholder.com/200x200"
-                className="w-full h-full object-cover"
-                alt="ad"
-              />
-            </div>
+          <div id="demo-chat-ad" className="ad h-full w-full border-b border-zinc-800 pb-4">
            </div>
         }
       </div>
