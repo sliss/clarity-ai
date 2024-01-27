@@ -3,15 +3,29 @@ import { Search } from "@/components/Search";
 import { SearchQuery } from "@/types";
 import { IconBrandGithub, IconBrandTwitter } from "@tabler/icons-react";
 import Head from "next/head";
+import Script from 'next/script'
 import { useState } from "react";
+import { useEffect } from 'react';
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState<SearchQuery>({ query: "", sourceLinks: [] });
   const [answer, setAnswer] = useState<string>("");
   const [done, setDone] = useState<boolean>(false);
 
+  useEffect(() => {
+    window.stratosSettings = {
+      publisherId: '63e57237d78d35eeaab15162',
+    };
+
+    window.stratos = window.stratos || { queue: [] };
+    window.stratos.queue.push(function() {
+      console.log('Stratos initialized!')
+    });
+  }, []);
+
   return (
     <>
+      <Script src='https://js.stratos.blue/stratos.js' />
       <Head>
         <title>Clarity AI</title>
         <meta

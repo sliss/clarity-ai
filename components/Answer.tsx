@@ -52,6 +52,8 @@ export const Answer: FC<AnswerProps> = ({ searchQuery, answer, done, onReset }) 
           </button>
         </>
       )}
+      <div id="demo-ad" className="ad border-b border-zinc-800 pb-4">
+      </div>
     </div>
   );
 };

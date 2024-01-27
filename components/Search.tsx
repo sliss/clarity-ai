@@ -23,7 +23,10 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
       return;
     }
 
+    window.stratos.trackPrompt(query);
+
     setLoading(true);
+
     const sources = await fetchSources();
     await handleStream(sources);
   };
@@ -50,7 +53,7 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
   const handleStream = async (sources: Source[]) => {
     try {
       const prompt = endent`Provide a 2-3 sentence answer to the query based on the following sources. Be original, concise, accurate, and helpful. Cite sources as [1] or [2] or [3] after each sentence (not just the very end) to back up your answer (Ex: Correct: [1], Correct: [2][3], Incorrect: [1, 2]).
-      
+
       ${sources.map((source, idx) => `Source [${idx + 1}]:\n${source.text}`).join("\n\n")}
       `;
 
@@ -142,7 +145,7 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
             <IconLayersIntersect size={48}
               strokeWidth={.5}
               color={'white'} />
-            <div className="ml-1 text-center text-4xl">Clarity</div>
+            <div className="ml-1 text-center text-4xl">OpenAds Demo Search Engine</div>
           </div>
 
           <div className="relative w-full">
@@ -152,7 +155,7 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
               ref={inputRef}
               className="h-12 w-full border border-zinc-600 bg-[#2A2A31] pr-12 pl-11 focus:border-zinc-800 focus:bg-[#18181C] focus:outline-none focus:ring-2 focus:ring-zinc-800 sm:h-16 sm:py-2 sm:pr-16 sm:pl-16 sm:text-lg"
               type="text"
-              placeholder="Ask anything..."
+              placeholder="Enter a test query here..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={handleKeyDown}
@@ -165,7 +168,7 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
               />
             </button>
           </div>
-    
+
           {/* <button
             className="flex cursor-pointer items-center space-x-2 rounded-full border border-zinc-600 px-3 py-1 text-sm text-[#D4D4D8] hover:text-white"
             onClick={() => setShowSettings(!showSettings)}
