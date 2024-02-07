@@ -24,6 +24,9 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
     }
 
     //window.stratos.trackPrompt(query);
+    window.stratos.queue.push(function() {
+      window.stratos.getAds(query);
+    });
 
     setLoading(true);
 
