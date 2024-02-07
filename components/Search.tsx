@@ -23,7 +23,7 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
       return;
     }
 
-    window.stratos.trackPrompt(query);
+    //window.stratos.trackPrompt(query);
 
     setLoading(true);
 
