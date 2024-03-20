@@ -13,11 +13,14 @@ export default function Home() {
   const [done, setDone] = useState<boolean>(false);
 
   useEffect(() => {
+    // @ts-ignore
     window.stratosSettings = {
       publisherId: '63e57237d78d35eeaab15162',
     };
 
+    // @ts-ignore
     window.stratos = window.stratos || { queue: [] };
+    // @ts-ignore
     window.stratos.queue.push(function() {
       console.log('Stratos initialized!')
     });
