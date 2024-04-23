@@ -55,10 +55,8 @@ export const Answer: FC<AnswerProps> = ({ searchQuery, answer, done, onReset }) 
         )}
       </div>
       <div className="max-w-[800px] space-y-4 py-16 px-8 sm:px-24 sm:pt-16 pb-32">
-        {
           <div id="demo-chat-ad" className="ad h-full w-full border-b border-zinc-800 pb-4">
-           </div>
-        }
+          </div>
       </div>
     </div>
   );
