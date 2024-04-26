@@ -23,16 +23,17 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
       return;
     }
 
-    //window.stratos.trackPrompt(query);
-    console.log('pushing getAds into stratos command queue');
-    window.stratos.queue.push(function() {
-      window.stratos.getAds(query);
-    });
-
     setLoading(true);
 
     const sources = await fetchSources();
     await handleStream(sources);
+
+    //window.stratos.trackPrompt(query);
+    // @ts-ignore
+    window.stratos.queue.push(function() {
+      // @ts-ignore
+      window.stratos.getAds(query);
+    });
   };
 
   const fetchSources = async () => {
