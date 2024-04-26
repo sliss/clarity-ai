@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import { Answer } from "@/components/Answer";
 import { Search } from "@/components/Search";
 import { SearchQuery } from "@/types";
@@ -6,6 +8,8 @@ import Head from "next/head";
 import Script from 'next/script'
 import { useState } from "react";
 import { useEffect } from 'react';
+
+console.log(process.env);
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState<SearchQuery>({ query: "", sourceLinks: [] });
