@@ -5,7 +5,8 @@
   "scripts": {
     "build": "next build",
     "start": "next start -p `echo $PORT`",
-    "lint": "next lint"
+    "lint": "next lint",
+    "dev": "env OPENAI_KEY=your-key-goes-here next dev"
   },
   "dependencies": {
     "@mozilla/readability": "^0.5.0",
