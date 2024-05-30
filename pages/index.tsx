@@ -48,7 +48,7 @@ export default function Home() {
           href="/favicon.png"
         />
       </Head>
-      <div className="h-screen overflow-auto bg-[#18181C] text-[#D4D4D8]">
+      <div className="h-screen overflow-auto bg-[#FBEEE7] text-[#363636]">
         {answer ? (
           <Answer
             searchQuery={searchQuery}

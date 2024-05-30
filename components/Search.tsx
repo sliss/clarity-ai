@@ -149,7 +149,7 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
           <div className="flex items-center">
             <IconLayersIntersect size={48}
               strokeWidth={.5}
-              color={'white'} />
+              color={'#363636'} />
             <div className="ml-1 text-center text-4xl">OpenAds Demo Search Engine</div>
           </div>
 
@@ -158,7 +158,7 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
 
             <input
               ref={inputRef}
-              className="h-12 w-full border border-zinc-600 bg-[#2A2A31] pr-12 pl-11 focus:border-zinc-800 focus:bg-[#18181C] focus:outline-none focus:ring-2 focus:ring-zinc-800 sm:h-16 sm:py-2 sm:pr-16 sm:pl-16 sm:text-lg"
+              className="h-12 w-full border border-zinc-600 bg-[#FFFFFF] pr-12 pl-11 focus:border-zinc-800 focus:bg-[#FFFFFD] focus:outline-none focus:ring-2 focus:ring-zinc-800 sm:h-16 sm:py-2 sm:pr-16 sm:pl-16 sm:text-lg"
               type="text"
               placeholder="Enter a test query here..."
               value={query}
