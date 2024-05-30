@@ -26,6 +26,7 @@ export const OpenAIStream = async (prompt: string, apiKey: string) => {
   //console.log('utils/answer result: ');
   //console.log(res);
   if (res.status !== 200) {
+    // console.log('utils/answer error: ', res);
     throw new Error("OpenAI API returned an error attempting to answer the user query");
   }
 
