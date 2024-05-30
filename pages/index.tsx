@@ -3,15 +3,32 @@ import { Search } from "@/components/Search";
 import { SearchQuery } from "@/types";
 import { IconBrandGithub, IconBrandTwitter } from "@tabler/icons-react";
 import Head from "next/head";
+import Script from 'next/script'
 import { useState } from "react";
+import { useEffect } from 'react';
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState<SearchQuery>({ query: "", sourceLinks: [] });
   const [answer, setAnswer] = useState<string>("");
   const [done, setDone] = useState<boolean>(false);
 
+  useEffect(() => {
+    // @ts-ignore
+    window.stratosSettings = {
+      publisherId: '63e57237d78d35eeaab15162',
+    };
+
+    // @ts-ignore
+    window.stratos = window.stratos || { queue: [] };
+    // @ts-ignore
+    window.stratos.queue.push(function() {
+      console.log('Stratos initialized!')
+    });
+  }, []);
+
   return (
     <>
+      <Script src='https://js.stratos.blue/stratos.js' />
       <Head>
         <title>Clarity AI</title>
         <meta
@@ -27,25 +44,7 @@ export default function Home() {
           href="/favicon.png"
         />
       </Head>
-      <div className="h-screen overflow-auto bg-[#18181C] text-[#D4D4D8]">
-        <a
-          className="absolute top-0 right-12 p-4 cursor-pointer"
-          href="https://twitter.com/mckaywrigley"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <IconBrandTwitter />
-        </a>
-
-        <a
-          className="absolute top-0 right-2 p-4 cursor-pointer"
-          href="https://github.com/mckaywrigley/clarity-ai"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <IconBrandGithub />
-        </a>
-
+      <div className="h-screen overflow-auto bg-[#FBEEE7] text-[#363636]">
         {answer ? (
           <Answer
             searchQuery={searchQuery}

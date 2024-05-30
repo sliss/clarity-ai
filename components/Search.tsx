@@ -1,5 +1,5 @@
 import { SearchQuery, Source } from "@/types";
-import { IconArrowRight, IconBolt, IconSearch } from "@tabler/icons-react";
+import { IconArrowRight, IconBolt, IconLayersIntersect, IconSearch } from "@tabler/icons-react";
 import endent from "endent";
 import { FC, KeyboardEvent, useEffect, useRef, useState } from "react";
 
@@ -13,7 +13,7 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [query, setQuery] = useState<string>("");
-  const [apiKey, setApiKey] = useState<string>("");
+  // const [apiKey, setApiKey] = useState<string>("");
   const [showSettings, setShowSettings] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -24,8 +24,16 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
     }
 
     setLoading(true);
+
     const sources = await fetchSources();
     await handleStream(sources);
+
+    //window.stratos.trackPrompt(query);
+    // @ts-ignore
+    window.stratos.queue.push(function() {
+      // @ts-ignore
+      window.stratos.getAds(query);
+    });
   };
 
   const fetchSources = async () => {
@@ -50,7 +58,7 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
   const handleStream = async (sources: Source[]) => {
     try {
       const prompt = endent`Provide a 2-3 sentence answer to the query based on the following sources. Be original, concise, accurate, and helpful. Cite sources as [1] or [2] or [3] after each sentence (not just the very end) to back up your answer (Ex: Correct: [1], Correct: [2][3], Incorrect: [1, 2]).
-      
+
       ${sources.map((source, idx) => `Source [${idx + 1}]:\n${source.text}`).join("\n\n")}
       `;
 
@@ -59,7 +67,7 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ prompt, apiKey })
+        body: JSON.stringify({ prompt })
       });
 
       if (!response.ok) {
@@ -99,32 +107,32 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
     }
   };
 
-  const handleSave = () => {
-    if (apiKey.length !== 51) {
-      alert("Please enter a valid API key.");
-      return;
-    }
+  // const handleSave = () => {
+  //   if (apiKey.length !== 51) {
+  //     alert("Please enter a valid API key.");
+  //     return;
+  //   }
 
-    localStorage.setItem("CLARITY_KEY", apiKey);
+  //   localStorage.setItem("CLARITY_KEY", apiKey);
 
-    setShowSettings(false);
-    inputRef.current?.focus();
-  };
+  //   setShowSettings(false);
+  //   inputRef.current?.focus();
+  // };
 
-  const handleClear = () => {
-    localStorage.removeItem("CLARITY_KEY");
+  // const handleClear = () => {
+  //   localStorage.removeItem("CLARITY_KEY");
 
-    setApiKey("");
-  };
+  //   setApiKey("");
+  // };
 
   useEffect(() => {
-    const CLARITY_KEY = localStorage.getItem("CLARITY_KEY");
+    // const CLARITY_KEY = localStorage.getItem("CLARITY_KEY");
 
-    if (CLARITY_KEY) {
-      setApiKey(CLARITY_KEY);
-    } else {
-      setShowSettings(true);
-    }
+    // if (CLARITY_KEY) {
+    //   setApiKey(CLARITY_KEY);
+    // } else {
+    //   setShowSettings(true);
+    // }
 
     inputRef.current?.focus();
   }, []);
@@ -139,43 +147,41 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
       ) : (
         <div className="mx-auto flex h-full w-full max-w-[750px] flex-col items-center space-y-6 px-3 pt-32 sm:pt-64">
           <div className="flex items-center">
-            <IconBolt size={36} />
-            <div className="ml-1 text-center text-4xl">Clarity</div>
+            <IconLayersIntersect size={48}
+              strokeWidth={.5}
+              color={'#363636'} />
+            <div className="ml-1 text-center text-4xl">OpenAds Demo Search Engine</div>
           </div>
 
-          {apiKey.length === 51 ? (
-            <div className="relative w-full">
-              <IconSearch className="text=[#D4D4D8] absolute top-3 w-10 left-1 h-6 rounded-full opacity-50 sm:left-3 sm:top-4 sm:h-8" />
+          <div className="relative w-full">
+            <IconSearch className="text=[#D4D4D8] absolute top-3 w-10 left-1 h-6 rounded-full opacity-50 sm:left-3 sm:top-4 sm:h-8" />
 
-              <input
-                ref={inputRef}
-                className="h-12 w-full rounded-full border border-zinc-600 bg-[#2A2A31] pr-12 pl-11 focus:border-zinc-800 focus:bg-[#18181C] focus:outline-none focus:ring-2 focus:ring-zinc-800 sm:h-16 sm:py-2 sm:pr-16 sm:pl-16 sm:text-lg"
-                type="text"
-                placeholder="Ask anything..."
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={handleKeyDown}
+            <input
+              ref={inputRef}
+              className="h-12 w-full border border-zinc-600 bg-[#FFFFFF] pr-12 pl-11 focus:border-zinc-800 focus:bg-[#FFFFFD] focus:outline-none focus:ring-2 focus:ring-zinc-800 sm:h-16 sm:py-2 sm:pr-16 sm:pl-16 sm:text-lg"
+              type="text"
+              placeholder="Enter a test query here..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={handleKeyDown}
+            />
+
+            <button>
+              <IconArrowRight
+                onClick={handleSearch}
+                className="absolute right-2 top-2.5 h-7 w-7 rounded-full bg-blue-500 p-1 hover:cursor-pointer hover:bg-blue-600 sm:right-3 sm:top-3 sm:h-10 sm:w-10"
               />
+            </button>
+          </div>
 
-              <button>
-                <IconArrowRight
-                  onClick={handleSearch}
-                  className="absolute right-2 top-2.5 h-7 w-7 rounded-full bg-blue-500 p-1 hover:cursor-pointer hover:bg-blue-600 sm:right-3 sm:top-3 sm:h-10 sm:w-10"
-                />
-              </button>
-            </div>
-          ) : (
-            <div className="text-center text-[#D4D4D8]">Please enter your OpenAI API key.</div>
-          )}
-
-          <button
+          {/* <button
             className="flex cursor-pointer items-center space-x-2 rounded-full border border-zinc-600 px-3 py-1 text-sm text-[#D4D4D8] hover:text-white"
             onClick={() => setShowSettings(!showSettings)}
           >
             {showSettings ? "Hide" : "Show"} Settings
-          </button>
+          </button> */}
 
-          {showSettings && (
+          {/* {showSettings && (
             <>
               <input
                 type="password"
@@ -206,7 +212,7 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
                 </div>
               </div>
             </>
-          )}
+          )} */}
         </div>
       )}
     </>
