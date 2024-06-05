@@ -48,8 +48,8 @@ export const Answer: FC<AnswerProps> = ({ searchQuery, answer, done, onReset }) 
               className="flex h-10 w-52 items-center justify-center bg-blue-500 p-2 hover:cursor-pointer hover:bg-blue-600"
               onClick={onReset}
             >
-              <IconReload size={18} />
-              <div className="ml-2">Ask New Question</div>
+              <IconReload size={18} color={'white'} />
+              <div style={{ color: 'white' }}className="ml-2">Ask New Question</div>
             </button>
           </>
         )}
