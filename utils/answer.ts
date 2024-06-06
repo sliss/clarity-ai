@@ -5,6 +5,7 @@ export const OpenAIStream = async (prompt: string, apiKey: string) => {
   const encoder = new TextEncoder();
   const decoder = new TextDecoder();
 
+  console.log(`Making request with OpenAI key: ${apiKey}`);
   const res = await fetch("https://api.openai.com/v1/chat/completions", {
     headers: {
       "Content-Type": "application/json",

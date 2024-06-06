@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "next start -p `echo $PORT`",
     "lint": "next lint",
-    "dev": "env OPENAI_API_KEY=your-key-here next dev"
+    "dev": "next dev"
   },
   "dependencies": {
     "@mozilla/readability": "^0.5.0",
