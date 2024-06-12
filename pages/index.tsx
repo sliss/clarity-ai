@@ -19,7 +19,8 @@ export default function Home() {
   useEffect(() => {
     // @ts-ignore
     window.stratosSettings = {
-      publisherId: '63e57237d78d35eeaab15162',
+      publisherId: '6660be5c4e70d17b07751c91',
+      //publisherId: '63e57237d78d35eeaab15162',
     };
 
     // @ts-ignore
