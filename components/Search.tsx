@@ -25,16 +25,23 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
 
     let result: any = null;
 
-    // @ts-ignore
-    window.stratos.queue.push(function() {
+    const getAdsPromise = new Promise<void>(resolve => {
       // @ts-ignore
-      window.stratos.getAds(query, true).then(res => { result = res; });
+      window.stratos.queue.push(function() {
+        // @ts-ignore
+        window.stratos.getAds(query, true).then(res => {
+          result = res;
+          resolve();
+        });
+      });
     });
 
     setLoading(true);
 
     const sources = await fetchSources();
     await handleStream(sources);
+
+    await getAdsPromise;
 
     // @ts-ignore
     window.stratos.queue.push(function() {
