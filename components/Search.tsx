@@ -39,7 +39,7 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
     // @ts-ignore
     window.stratos.queue.push(function() {
       setTimeout(() => {
-        if (result.succeeded) {
+        if (result?.succeeded) {
           // @ts-ignore
           window.stratos.renderAds();
         } else {
