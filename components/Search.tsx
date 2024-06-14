@@ -44,13 +44,13 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
           window.stratos.renderAds();
         } else {
           let copy = 'An error occurred while serving the ad';
-          if (result.lowRelevance) {
+          if (result?.lowRelevance) {
             copy = '<p>The user\'s prompt wasn\'t commercially relevant to our advertisers.</p><p>In cases like this, run a house ad for your own product, or a static ad based on your audience.</p>';
-          } else if (result.usOnly) {
+          } else if (result?.usOnly) {
             copy = 'We currently only serve ads to US users.';
-          } else if (result.noMatchedAdvertiser) {
+          } else if (result?.noMatchedAdvertiser) {
             copy = 'No advertiser was found';
-          } else if (result.moderation) {
+          } else if (result?.moderation) {
             copy = 'The user\'s prompt was flagged by OpenAds.ai\'s moderation system.';
           }
           document.getElementById('demo-chat-ad')!.innerHTML = `
