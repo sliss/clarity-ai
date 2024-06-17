@@ -25,15 +25,10 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
 
     let result: any = null;
 
-    const getAdsPromise = new Promise<void>(resolve => {
+    // @ts-ignore
+    window.stratos.queue.push(function() {
       // @ts-ignore
-      window.stratos.queue.push(function() {
-        // @ts-ignore
-        window.stratos.getAds(query, true).then(res => {
-          result = res;
-          resolve();
-        });
-      });
+      window.stratos.getAds(query, true);
     });
 
     setLoading(true);
@@ -41,32 +36,11 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
     const sources = await fetchSources();
     await handleStream(sources);
 
-    await getAdsPromise;
-
     // @ts-ignore
     window.stratos.queue.push(function() {
       setTimeout(() => {
-        if (result?.succeeded) {
-          // @ts-ignore
-          window.stratos.renderAds();
-        } else {
-          let copy = 'An error occurred while serving the ad';
-          if (result?.lowRelevance) {
-            copy = '<p>The user\'s prompt wasn\'t commercially relevant to our advertisers.</p><p>In cases like this, run a house ad for your own product, or a static ad based on your audience.</p>';
-          } else if (result?.usOnly) {
-            copy = 'We currently only serve ads to US users.';
-          } else if (result?.noMatchedAdvertiser) {
-            copy = 'No advertiser was found';
-          } else if (result?.moderation) {
-            copy = 'The user\'s prompt was flagged by OpenAds.ai\'s moderation system.';
-          }
-          document.getElementById('demo-chat-ad')!.innerHTML = `
-          <div>
-            <h2 class="text-lg font-bold">No Demo Ad</h2>
-            <div>${copy}</div>
-          </div>
-          `;
-        }
+        // @ts-ignore
+        window.stratos.renderAds();
       }, 0);
     });
   };
