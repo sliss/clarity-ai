@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import { Answer } from "@/components/Answer";
 import { Search } from "@/components/Search";
 import { SearchQuery } from "@/types";
@@ -7,6 +9,8 @@ import Script from 'next/script'
 import { useState } from "react";
 import { useEffect } from 'react';
 
+console.log(process.env);
+
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState<SearchQuery>({ query: "", sourceLinks: [] });
   const [answer, setAnswer] = useState<string>("");
@@ -15,7 +19,36 @@ export default function Home() {
   useEffect(() => {
     // @ts-ignore
     window.stratosSettings = {
-      publisherId: '63e57237d78d35eeaab15162',
+      publisherId: '6660be5c4e70d17b07751c91', // prod
+      // publisherId: '63e57237d78d35eeaab15162', //sliss-dev
+      adSlots: [
+        {
+          // adUnitCode: 'clarity-demo-chat-ad',
+          adUnitCode: 'demo-clarity-chat-ad-infeed',
+          adFormat: 'chat',
+          sizes: [[600, 300]],
+        }
+      ],
+      cssOverrides:
+        `:root {
+        --background: #f5efdd;
+        --text: #000;
+        --header: #ffffff4c;
+        --header-background: #ffffff10;
+        --title: #000;
+        --highlight: #c8ddff;
+        --action-button: #3b82f6;
+        --question-bubble: #FFF;
+        --radius: 5px;
+        --user-chat: #0061ff;
+        --system-chat: #e0e0e0;
+      }
+      #visit-site-link {
+        color: #FFF;
+      }
+      .ad-questions li:hover {
+        color: #000;
+      }`
     };
 
     // @ts-ignore
@@ -44,7 +77,7 @@ export default function Home() {
           href="/favicon.png"
         />
       </Head>
-      <div className="h-screen overflow-auto bg-[#FBEEE7] text-[#363636]">
+      <div className="h-screen overflow-auto bg-[#f5f3ed] text-[#333]">
         {answer ? (
           <Answer
             searchQuery={searchQuery}

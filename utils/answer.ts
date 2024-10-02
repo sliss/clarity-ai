@@ -5,6 +5,7 @@ export const OpenAIStream = async (prompt: string, apiKey: string) => {
   const encoder = new TextEncoder();
   const decoder = new TextDecoder();
 
+  console.log(`Making request with OpenAI key: ${apiKey}`);
   const res = await fetch("https://api.openai.com/v1/chat/completions", {
     headers: {
       "Content-Type": "application/json",
@@ -23,10 +24,11 @@ export const OpenAIStream = async (prompt: string, apiKey: string) => {
     })
   });
 
-  console.log('utils/answer result:');
-  console.log(res);
+  //console.log('utils/answer result: ');
+  //console.log(res);
   if (res.status !== 200) {
-    throw new Error("OpenAI API returned an error");
+    // console.log('utils/answer error: ', res);
+    throw new Error("OpenAI API returned an error attempting to answer the user query");
   }
 
   const stream = new ReadableStream({
