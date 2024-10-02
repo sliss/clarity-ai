@@ -19,15 +19,31 @@ export default function Home() {
   useEffect(() => {
     // @ts-ignore
     window.stratosSettings = {
-      publisherId: '6660be5c4e70d17b07751c91',
-      //publisherId: '63e57237d78d35eeaab15162',
+      // publisherId: '6660be5c4e70d17b07751c91', // prod
+      publisherId: '63e57237d78d35eeaab15162', //sliss-dev
       adSlots: [
         {
           adUnitCode: 'clarity-demo-chat-ad',
           adFormat: 'chat',
           sizes: [[300, 600]],
         }
-      ]
+      ],
+      cssOverrides:
+        `:root {
+        --background: #161719;
+        --text: #ffffff9a;
+        /* 9a = 0.60 */
+        --header: #ffffff4c;
+        /*.30*/
+        --header-background: #ffffff10;
+        --title: #ffffff;
+        --highlight: #d24e35;
+        --suggestion-icon: #d24e35;
+        --content: #212327;
+        --radius: 5px;
+        --user-chat: #d24e35;
+        --system-chat: #e0e0e0;
+      }`
     };
 
     // @ts-ignore
