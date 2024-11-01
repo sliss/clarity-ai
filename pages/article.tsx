@@ -155,10 +155,10 @@ export default function Article() {
     <div class="interactive-panel">
       <div class="chat-container" id="chatContainer">
         <div class="chat-message visible">
-          How long is the Ultra Trail Mont Blanc?
+          Gear Up For Adventure
         </div>
         <div class="chat-message visible">
-          The Ultra-Trail du Mont-Blanc (UTMB) is 171 kilometers (106 miles) long with approximately 10,000 meters (32,800 feet) of elevation gain.
+         Marmot: High-quality hiking gear & apparel – battle-tested for the mountains or your own backyard.
         </div>
       </div>
       
