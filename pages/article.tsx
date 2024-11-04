@@ -79,6 +79,26 @@ export default function Article() {
       overflow-y: auto;
       font-size: 16px;
       line-height: 1.4;
+      scrollbar-width: thin;
+      scrollbar-color: #cbd5e1 transparent;
+    }
+
+    /* For Webkit browsers (Chrome, Safari) */
+    .chat-container::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .chat-container::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .chat-container::-webkit-scrollbar-thumb {
+      background-color: #cbd5e1;
+      border-radius: 3px;
+    }
+
+    .chat-container::-webkit-scrollbar-thumb:hover {
+      background-color: #94a3b8;
     }
 
     .chat-message {
@@ -126,7 +146,7 @@ export default function Article() {
       text-align: left;
       cursor: pointer;
       transition: background-color 0.2s ease;
-      font-size: 12px;
+      font-size: 16px;
       color: #495057;
     }
     
@@ -154,6 +174,53 @@ export default function Article() {
       margin: 20px 0;
       color: #444;
     }
+
+    .input-container {
+      display: flex;
+      align-items: center;
+      background: #FFFFFF;
+      border-radius: 6px;
+      padding: 6px 8px;
+      gap: 8px;
+    }
+
+    .chat-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-size: 16px;
+      color: #495057;
+      outline: none;
+      padding: 4px;
+    }
+
+    .chat-input::placeholder {
+      color: #6c757d;
+    }
+
+    .submit-button {
+      background: #c53746;
+      border: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background-color 0.2s ease;
+    }
+
+    .submit-button:hover {
+      background: #0052cc;
+    }
+
+    .submit-button svg {
+      width: 14px;
+      height: 14px;
+      fill: white;
+    }
   </style>
 </head>
 <body>
@@ -180,9 +247,19 @@ export default function Article() {
         <button class="question-btn" data-question="How should I carry water during an ultra?">
           How should I carry water during an ultra?
         </button>
-        <button class="question-btn" data-question="What shoes are best for technical alpine trails?">
-          What shoes are best for technical alpine trails?
-        </button>
+        <div class="input-container">
+          <input 
+            type="text" 
+            class="chat-input" 
+            placeholder="Ask a question..." 
+            id="chatInput"
+          >
+          <button class="submit-button" id="submitButton">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -204,6 +281,24 @@ export default function Article() {
     };
 
     const responses = {
+      "What shoes are best for technical alpine trails?":
+        "For technical alpine trails like UTMB, you'll want shoes with:\\n\\n" +
+        "• Aggressive outsole lugs (5-6mm) for grip\\n" +
+        "• Rock plate protection\\n" +
+        "• Balanced cushioning for long descents\\n" +
+        "• Durable upper with toe protection\\n\\n" +
+        "Top choices include the Hoka Speedgoat, La Sportiva Bushido II, and Salomon S/Lab Ultra 3.",
+      
+      "What gear do I need for a 100+ mile ultra?": 
+        "Essential gear for a 100+ mile ultra includes:\\n\\n" +
+        "• Hydration vest (12-15L capacity)\\n" +
+        "• Waterproof jacket & pants\\n" +
+        "• Emergency blanket & first aid\\n" +
+        "• Headlamp + backup batteries\\n" +
+        "• Nutrition (gels, bars, salt tabs)\\n" +
+        "• 2 water bottles/soft flasks\\n" +
+        "• Trekking poles for climbs",
+      
       "What's the difference between 5L and 12L vests?": 
         "The ADV SKIN 5 is perfect for shorter ultras (up to 50 miles) with minimal mandatory gear. The 12L offers extra storage for required equipment at races like UTMB, including emergency gear and extra layers.",
       
@@ -277,9 +372,9 @@ export default function Article() {
 
     async function handleQuestionClick(event) {
       const question = event.target.getAttribute('data-question');
+      clearChat();
       
       if (question === "How should I carry water during an ultra?") {
-        clearChat();
         updateImage(hydrationBranch.imageUrl);
         
         const questionElement = document.createElement('div');
@@ -298,8 +393,6 @@ export default function Article() {
         updateQuestions(hydrationBranch.followUpQuestions);
         
       } else if (question === "Customer reviews") {
-        clearChat();
-        
         const questionElement = document.createElement('div');
         questionElement.className = 'chat-message question';
         questionElement.textContent = question;
@@ -340,6 +433,41 @@ export default function Article() {
     document.getElementById('addToCartBtn').addEventListener('click', () => {
       window.open(hydrationBranch.productUrl, '_blank');
     });
+
+    document.getElementById('chatInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        handleUserInput();
+      }
+    });
+
+    document.getElementById('submitButton').addEventListener('click', handleUserInput);
+
+    function handleUserInput() {
+      const input = document.getElementById('chatInput');
+      const question = input.value.trim();
+      
+      if (question) {
+        clearChat();
+        
+        const questionElement = document.createElement('div');
+        questionElement.className = 'chat-message question';
+        questionElement.textContent = question;
+        chatContainer.appendChild(questionElement);
+        
+        const responseElement = document.createElement('div');
+        responseElement.className = 'chat-message';
+        chatContainer.appendChild(responseElement);
+        
+        setTimeout(() => questionElement.classList.add('visible'), 100);
+        setTimeout(() => responseElement.classList.add('visible'), 200);
+        
+        // Default response for custom questions
+        const response = "Thanks for your question! I'm just a demo for illustrative purposes. Check out the search ad demo for ads with live chat experiences.";
+        
+        typeMessage(responseElement, response);
+        input.value = '';
+      }
+    }
   </script>
 </body>
 </html>
