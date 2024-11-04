@@ -16,9 +16,8 @@ export default function Article() {
     
     .container {
       display: flex;
-      width: 970px;
+      width: 910px;
       height: 250px;
-      margin: 0 auto;
       background: white;
       overflow: hidden;
     }
@@ -66,7 +65,10 @@ export default function Article() {
       display: flex;
       flex-direction: column;
       padding: 16px;
+      padding-top: 0;
+      padding-bottom: 0;
       gap: 12px;
+      background-color: #f3f4f6;
     }
     
     .chat-container {
@@ -75,7 +77,7 @@ export default function Article() {
       border-radius: 8px;
       padding: 12px;
       overflow-y: auto;
-      font-size: 13px;
+      font-size: 16px;
       line-height: 1.4;
     }
 
@@ -86,9 +88,18 @@ export default function Article() {
       transition: opacity 0.3s ease, transform 0.3s ease;
     }
     
+    .chat-message.question {
+      font-weight: bold;
+    }
+    
     .chat-message.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    .chat-message.headline {
+      font-size: 24px;
+      font-weight: bold;
     }
 
     .review-link {
@@ -154,11 +165,11 @@ export default function Article() {
     
     <div class="interactive-panel">
       <div class="chat-container" id="chatContainer">
-        <div class="chat-message visible">
-          Gear Up For Adventure
+        <div class="chat-message visible headline">
+          Your Adventure Starts Here
         </div>
         <div class="chat-message visible">
-         Marmot: High-quality hiking gear & apparel – battle-tested for the mountains or your own backyard.
+         Ultramarathons and weekend hikes start with Marmot. High-quality hiking gear & apparel – battle-tested for the mountains or your own backyard.
         </div>
       </div>
       
@@ -272,7 +283,7 @@ export default function Article() {
         updateImage(hydrationBranch.imageUrl);
         
         const questionElement = document.createElement('div');
-        questionElement.className = 'chat-message';
+        questionElement.className = 'chat-message question';
         questionElement.textContent = question;
         chatContainer.appendChild(questionElement);
         
@@ -290,7 +301,7 @@ export default function Article() {
         clearChat();
         
         const questionElement = document.createElement('div');
-        questionElement.className = 'chat-message';
+        questionElement.className = 'chat-message question';
         questionElement.textContent = question;
         chatContainer.appendChild(questionElement);
         
@@ -305,7 +316,7 @@ export default function Article() {
         
       } else if (responses[question]) {
         const questionElement = document.createElement('div');
-        questionElement.className = 'chat-message';
+        questionElement.className = 'chat-message question';
         questionElement.textContent = question;
         chatContainer.appendChild(questionElement);
         
@@ -360,7 +371,7 @@ export default function Article() {
           <p className="text-xl mt-5 opacity-90">Exploring the World&apos;s Most Prestigious Mountain Ultra</p>
         </div>
 
-        <main className="max-w-[800px] mx-auto px-5 py-10">
+        <main className="max-w-[970px] mx-auto px-5 py-10">
           <div className="text-sm text-gray-600 mb-8 pb-5 border-b border-gray-200">
             <span>By Steven Liss</span> | 
             <span> November 1, 2024</span> | 
@@ -393,7 +404,7 @@ export default function Article() {
               The race begins and ends in Chamonix, France, but takes participants through Italy&apos;s Courmayeur and Switzerland&apos;s Champex-Lac, offering a truly international mountain running experience. Elite athletes typically complete the course in around 20 hours, while many participants take up to 46 hours – the official time limit – to reach the finish line.
             </p>
 
-            <div className="my-10 -mx-[85px] bg-gray-100 p-5 rounded-lg">
+            <div className="my-10 bg-gray-100 p-5 rounded-lg">
               <iframe
                 srcDoc={iframeContent}
                 width="970"
