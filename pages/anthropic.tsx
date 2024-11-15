@@ -55,7 +55,7 @@ export default function Article() {
 
             <div className="my-8">
               <Image 
-                src="/images/multi-monitor.jpg"
+                src="/images/multi-monitor.png"
                 alt="AI system processing multiple video feeds" 
                 width={800} 
                 height={400} 
@@ -99,7 +99,7 @@ export default function Article() {
 
             <div className="my-8">
               <Image 
-                src="/images/edge-comp.jpg"
+                src="/images/edge-comp.png"
                 alt="Edge computing devices processing AI workloads" 
                 width={800} 
                 height={400} 
