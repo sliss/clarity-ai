@@ -55,7 +55,7 @@ export default function Article() {
 
             <div className="my-8">
               <Image 
-                src="/images/ai-processing.jpg"
+                src="/images/multi-monitor.jpg"
                 alt="AI system processing multiple video feeds" 
                 width={800} 
                 height={400} 
@@ -83,7 +83,7 @@ export default function Article() {
             <div className="my-10 bg-gray-100 p-5 rounded-lg">
               <iframe
                 srcDoc={`
-                  <script async src="https://js.stratos.blue/stratos.js"></script>
+                  <script async src="https://js.stratos.blue/stratos.js?publisherId=6660be5c4e70d17b07751c91"></script>
                   <div id="stratos-content"></div>
                 `}
                 width="970"
@@ -99,7 +99,7 @@ export default function Article() {
 
             <div className="my-8">
               <Image 
-                src="/images/edge-computing.jpg"
+                src="/images/edge-comp.jpg"
                 alt="Edge computing devices processing AI workloads" 
                 width={800} 
                 height={400} 
