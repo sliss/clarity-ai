@@ -82,6 +82,7 @@ export default function Article() {
             </p>
 
             <div className="my-10 bg-gray-100 p-5 rounded-lg">
+              <div id="demo-clarity-chat-ad-infeed"></div>
               <iframe
                 srcDoc={`
                   <script async src="https://js.stratos.blue/stratos.js?publisherId=6660be5c4e70d17b07751c91"></script>
