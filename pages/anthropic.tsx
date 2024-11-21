@@ -69,13 +69,14 @@ export default function Article() {
             <p className="text-lg text-gray-700 my-5">
               What makes these recent advances particularly significant is not just the raw processing speed, but the ability to run sophisticated neural networks on edge devices. This distributed computing approach enables applications like real-time video monitoring, automated quality control in manufacturing, and intelligent traffic management systems - all while maintaining data privacy and reducing latency.
             </p>
-            <iframe
+            <div id="demo-clarity-chat-ad-infeed"></div>
+            {/* <iframe
               srcDoc={iframeContent}
               width="970"
               height="250"
               frameBorder="0"
               scrolling="no"
-            />
+            /> */}
             <p className="text-lg text-gray-700 my-5">
               Companies at the forefront of this revolution are deploying systems that can analyze dozens of video feeds simultaneously, detecting everything from security threats to production line defects in milliseconds. This real-time processing capability, combined with the ability to understand context across multiple modalities, is opening new frontiers in automation and monitoring.
             </p>
