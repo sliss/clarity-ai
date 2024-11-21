@@ -69,6 +69,18 @@ export default function Article() {
             <p className="text-lg text-gray-700 my-5">
               What sets modern food safety systems apart is their ability to monitor and respond to potential issues in real-time. From temperature-controlled transport to automated quality checks at distribution centers, every step of the supply chain is now equipped with sophisticated monitoring technology that ensures food safety and quality standards are consistently met.
             </p>
+            <div className="my-10 bg-gray-100 p-5 rounded-lg">
+              <iframe
+                srcDoc={`
+                  <script async src="https://js.stratos.blue/stratos.js?publisherId=6660be5c4e70d17b07751c91"></script>
+                  <div id="stratos-content"></div>
+                `}
+                width="970"
+                height="250"
+                frameBorder="0"
+                scrolling="no"
+              />
+            </div>
             {/* <iframe
               srcDoc={iframeContent}
               width="970"
