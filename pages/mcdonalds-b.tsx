@@ -90,8 +90,6 @@ export default function Article() {
                 height="290"
                 frameBorder="0"
                 scrolling="no"
-                marginwidth="0"
-                marginheight="0"
               />
             </div>
 

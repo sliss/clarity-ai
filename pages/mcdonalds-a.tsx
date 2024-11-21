@@ -78,8 +78,6 @@ export default function Article() {
                 height="290"
                 frameBorder="0"
                 scrolling="no"
-                marginwidth="0"
-                marginheight="0"
               />
             </div>
             <img src="/images/mcd-ad.png" alt="McDonalds ad" className="rounded-lg object-cover w-full h-[400px]" style={{ height: '250px' }} />
