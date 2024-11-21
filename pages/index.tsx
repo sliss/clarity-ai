@@ -22,13 +22,14 @@ export default function Home() {
       publisherId: '6660be5c4e70d17b07751c91', // prod
       //publisherId: '63e57237d78d35eeaab15162', //sliss-dev
       //publisherId: '66393bf0c2ae100e268f0373', // michael@openads.ai demo account
+      //publisherId: '63e57237d78d35eeaab15162', //sliss-dev
       disableInitialLoad: true,
       adSlots: [
         {
           // adUnitCode: 'clarity-demo-chat-ad',
           adUnitCode: 'demo-clarity-chat-ad-infeed',
           adFormat: 'chat',
-          sizes: [[600, 300]],
+          size: 'fluid',
         }
       ],
       cssOverrides:
