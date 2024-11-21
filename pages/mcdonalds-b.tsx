@@ -41,7 +41,7 @@ export default function Article() {
           <p className="text-xl mt-5 opacity-90">How Digital Innovation is Transforming Food Safety Standards</p>
         </div>
 
-        <main className="max-w-[970px] mx-auto px-5 py-10">
+        <main className="max-w-[1070px] mx-auto px-5 py-10">
           <div className="text-sm text-gray-600 mb-8 pb-5 border-b border-gray-200">
             <span>By Maria Rodriguez</span> | 
             <span> March 15, 2024</span> | 
@@ -82,10 +82,9 @@ export default function Article() {
             </p>
 
             <div className="my-10 bg-gray-100 p-5 rounded-lg">
-              <div id="demo-clarity-chat-ad-infeed"></div>
               <iframe
                 srcDoc={`
-                  <script async src="https://js.stratos.blue/stratos.js?publisherId=6660be5c4e70d17b07751c91"></script>
+                  <script async src="https://js.stratos.blue/stratos.js?publisherId=6723c110a57d08398172c304"></script>
                   <div id="stratos-content"></div>
                 `}
                 width="970"

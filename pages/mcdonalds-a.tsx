@@ -41,7 +41,7 @@ export default function Article() {
           <p className="text-xl mt-5 opacity-90">How Digital Innovation is Transforming Food Safety Standards</p>
         </div>
 
-        <main className="max-w-[970px] mx-auto px-5 py-10">
+        <main className="max-w-[1070px] mx-auto px-5 py-10">
           <div className="text-sm text-gray-600 mb-8 pb-5 border-b border-gray-200">
             <span>By Maria Rodriguez</span> | 
             <span> March 15, 2024</span> | 
@@ -72,7 +72,7 @@ export default function Article() {
             <div className="my-10 bg-gray-100 p-5 rounded-lg">
               <iframe
                 srcDoc={`
-                  <script async src="https://js.stratos.blue/stratos.js?publisherId=6660be5c4e70d17b07751c91"></script>
+                  <script async src="https://js.stratos.blue/stratos.js?publisherId=6723c110a57d08398172c304"></script>
                   <div id="stratos-content"></div>
                 `}
                 width="970"
@@ -81,13 +81,6 @@ export default function Article() {
                 scrolling="no"
               />
             </div>
-            {/* <iframe
-              srcDoc={iframeContent}
-              width="970"
-              height="250"
-              frameBorder="0"
-              scrolling="no"
-            /> */}
             <img src="/images/mcd-ad.png" alt="McDonalds ad" className="rounded-lg object-cover w-full h-[400px]" style={{ height: '250px' }} />
             <p className="text-lg text-gray-700 my-5">
               Leading food service companies are implementing systems that can track thousands of shipments simultaneously, monitoring everything from temperature variations to delivery times. These digital solutions enable immediate responses to any deviations from safety protocols, ensuring that food quality is maintained throughout the entire supply chain.
