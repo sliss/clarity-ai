@@ -20,7 +20,9 @@ export default function Home() {
     // @ts-ignore
     window.stratosSettings = {
       publisherId: '6660be5c4e70d17b07751c91', // prod
-      // publisherId: '63e57237d78d35eeaab15162', //sliss-dev
+      //publisherId: '63e57237d78d35eeaab15162', //sliss-dev
+      //publisherId: '66393bf0c2ae100e268f0373', // michael@openads.ai demo account
+      disableInitialLoad: true,
       adSlots: [
         {
           // adUnitCode: 'clarity-demo-chat-ad',
