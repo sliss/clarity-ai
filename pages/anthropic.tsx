@@ -84,7 +84,7 @@ export default function Article() {
             <div className="my-10 bg-gray-100 p-5 rounded-lg">
               <iframe
                 srcDoc={`
-                  <script async src="https://js.stratos.blue/stratos.js?publisherId=6660be5c4e70d17b07751c91"></script>
+                  <script async src="https://js.stratos.blue/stratos.js?publisherId=6723c110a57d08398172c304"></script>
                   <div id="stratos-content"></div>
                 `}
                 width="970"
