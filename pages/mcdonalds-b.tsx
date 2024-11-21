@@ -85,12 +85,13 @@ export default function Article() {
               <iframe
                 srcDoc={`
                   <script async src="https://js.stratos.blue/stratos.js?publisherId=6723c110a57d08398172c304"></script>
-                  <div id="stratos-content"></div>
                 `}
                 width="970"
-                height="250"
+                height="290"
                 frameBorder="0"
                 scrolling="no"
+                marginwidth="0"
+                marginheight="0"
               />
             </div>
 
