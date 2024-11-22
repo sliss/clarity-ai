@@ -80,24 +80,9 @@ export default function Article() {
                 scrolling="no"
               />
             </div>
-            <img src="/images/mcd-ad.png" alt="McDonalds ad" className="rounded-lg object-cover w-full h-[400px]" style={{ height: '250px' }} />
             <p className="text-lg text-gray-700 my-5">
               Leading food service companies are implementing systems that can track thousands of shipments simultaneously, monitoring everything from temperature variations to delivery times. These digital solutions enable immediate responses to any deviations from safety protocols, ensuring that food quality is maintained throughout the entire supply chain.
             </p>
-
-            <div className="my-10 bg-gray-100 p-5 rounded-lg">
-              <div id="demo-clarity-chat-ad-infeed"></div>
-              <iframe
-                srcDoc={`
-                  <script async src="https://js.stratos.blue/stratos.js?publisherId=6660be5c4e70d17b07751c91"></script>
-                  <div id="stratos-content"></div>
-                `}
-                width="970"
-                height="250"
-                frameBorder="0"
-                scrolling="no"
-              />
-            </div>
 
             <blockquote className="text-2xl italic text-gray-600 border-l-4 border-[#c53746] pl-5 my-8">
               &ldquo;Food safety isn't just about following regulations – it's about building trust with every meal we serve. Technology helps us deliver on that promise.&rdquo; - James Chen, Global Food Safety Director

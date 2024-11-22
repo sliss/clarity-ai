@@ -76,7 +76,6 @@ export default function Article() {
               frameBorder="0"
               scrolling="no"
             /> */}
-            <img src="/images/mcd-ad.png" alt="McDonalds ad" className="rounded-lg object-cover w-full h-[400px]" style={{ height: '250px' }} />
             <p className="text-lg text-gray-700 my-5">
               Leading food service companies are implementing systems that can track thousands of shipments simultaneously, monitoring everything from temperature variations to delivery times. These digital solutions enable immediate responses to any deviations from safety protocols, ensuring that food quality is maintained throughout the entire supply chain.
             </p>
