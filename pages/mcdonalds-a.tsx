@@ -76,6 +76,8 @@ export default function Article() {
                 `}
                 width="970"
                 height="290"
+                marginWidth="0"
+                marginHeight="0"
                 frameBorder="0"
                 scrolling="no"
               />

@@ -16,8 +16,9 @@ export const Answer: FC<AnswerProps> = ({ searchQuery, answer, done, onReset }) 
     <div className="overflow-auto text-2xl sm:text-4xl">{searchQuery.query}</div>
 
     <div className="border-b border-zinc-800 pb-4">
-      <div id="demo-clarity-chat-ad-infeed" className="text-md text-blue-500">Answer</div>
-
+      <p className="text-md text-blue-500">Sample Advertisement</p>
+      <div id="demo-clarity-chat-ad-infeed"></div>
+      <p className="text-md text-blue-500">Sample Chat Output</p>
       <div className="mt-2 overflow-auto">{replaceSourcesWithLinks(answer, searchQuery.sourceLinks)}</div>
     </div>
 

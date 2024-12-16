@@ -538,6 +538,8 @@ export default function Article() {
                 width="970"
                 height="250"
                 frameBorder="0"
+                marginWidth="0"
+                marginHeight="0"
                 scrolling="no"
                 sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
               />
