@@ -41,7 +41,7 @@ export default function Article() {
           <p className="text-xl mt-5 opacity-90">How Faster Processing is Enabling Real-Time AI Applications</p>
         </div>
 
-        <main className="max-w-[970px] mx-auto px-5 py-10">
+        <main className="max-w-[1070px] mx-auto px-5 py-10">
           <div className="text-sm text-gray-600 mb-8 pb-5 border-b border-gray-200">
             <span>By Steven Liss</span> | 
             <span> March 15, 2024</span> | 
