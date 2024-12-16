@@ -535,11 +535,11 @@ export default function Article() {
             <div className="my-10 bg-gray-100 p-5 rounded-lg">
               <iframe
                 srcDoc={iframeContent}
-                width="970"
-                height="250"
-                frameBorder="0"
-                marginWidth="0"
-                marginHeight="0"
+                width={970}
+                height={250}
+                frameBorder={0}
+                marginWidth={0}
+                marginHeight={0}
                 scrolling="no"
                 sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
               />
