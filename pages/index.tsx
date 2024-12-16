@@ -32,6 +32,7 @@ export default function Home() {
           size: 'fluid',
         }
       ],
+      apiEndpoint: '/api/proxy-ads',
       cssOverrides:
         `:root {
         --background: #f5efdd;
