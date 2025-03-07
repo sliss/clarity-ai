@@ -88,7 +88,7 @@ export default function Article() {
                   <div id="stratos-content"></div>
                 `}
                 width={970}
-                height={250}
+                height={300}
                 marginWidth={0}
                 marginHeight={0}
                 frameBorder={0}

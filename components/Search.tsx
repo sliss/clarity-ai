@@ -58,10 +58,8 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
 
     // @ts-ignore
     window.stratos.queue.push(function() {
-      setTimeout(() => {
-        // @ts-ignore
-        window.stratos.renderAds();
-      }, 0);
+      // @ts-ignore
+      window.stratos.renderAds();
     });
   };
 
