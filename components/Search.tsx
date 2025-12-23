@@ -1,6 +1,5 @@
-import { SearchQuery, Source } from "@/types";
-import { IconArrowRight, IconBolt, IconLayersIntersect, IconSearch } from "@tabler/icons-react";
-import endent from "endent";
+import { SearchQuery } from "@/types";
+import { IconArrowRight, IconSearch } from "@tabler/icons-react";
 import { FC, KeyboardEvent, useEffect, useRef, useState } from "react";
 
 interface SearchProps {
@@ -8,6 +7,8 @@ interface SearchProps {
   onAnswerUpdate: (answer: string) => void;
   onDone: (done: boolean) => void;
 }
+
+const useSampleResponse = true;
 
 export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -43,8 +44,6 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
       return;
     }
 
-    let result: any = null;
-
     // @ts-ignore
     window.stratos.queue.push(function() {
       // @ts-ignore
@@ -52,9 +51,7 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
     });
 
     setLoading(true);
-
-    const sources = await fetchSources();
-    await handleStream(sources);
+    await handleStream();
 
     // @ts-ignore
     window.stratos.queue.push(function() {
@@ -65,31 +62,17 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
     });
   };
 
-  const fetchSources = async () => {
-    const response = await fetch("/api/sources", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ query })
-    });
-
-    if (!response.ok) {
-      setLoading(false);
-      throw new Error(response.statusText);
-    }
-
-    const { sources }: { sources: Source[] } = await response.json();
-
-    return sources;
-  };
-
-  const handleStream = async (sources: Source[]) => {
+  const handleStream = async () => {
     try {
-      const prompt = endent`Provide a 2-3 sentence answer to the query based on the following sources. Be original, concise, accurate, and helpful. Cite sources as [1] or [2] or [3] after each sentence (not just the very end) to back up your answer (Ex: Correct: [1], Correct: [2][3], Incorrect: [1, 2]).
+      if (useSampleResponse) {
+        setLoading(false);
+        onSearch({ query });
+        onAnswerUpdate("(LLM's response goes here)");
+        onDone(true);
+        return;
+      }
 
-      ${sources.map((source, idx) => `Source [${idx + 1}]:\n${source.text}`).join("\n\n")}
-      `;
+      const prompt = `Provide a 2-3 sentence answer to the following question. Be original, concise, accurate, and helpful.\n\nQuestion: ${query}`;
 
       const response = await fetch("/api/answer", {
         method: "POST",
@@ -105,7 +88,7 @@ export const Search: FC<SearchProps> = ({ onSearch, onAnswerUpdate, onDone }) =>
       }
 
       setLoading(false);
-      onSearch({ query, sourceLinks: sources.map((source) => source.url) });
+      onSearch({ query });
 
       const data = response.body;
 

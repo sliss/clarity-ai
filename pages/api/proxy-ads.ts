@@ -6,7 +6,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const response = await fetch('https://api.openads.ai/srv/get-ads', {
+    const response = await fetch('http://localhost:3000/srv/get-ads', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

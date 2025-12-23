@@ -9,5 +9,4 @@ export type Source = {
 
 export type SearchQuery = {
   query: string;
-  sourceLinks: string[];
 };
